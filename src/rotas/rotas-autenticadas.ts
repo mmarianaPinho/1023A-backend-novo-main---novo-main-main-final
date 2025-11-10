@@ -7,7 +7,7 @@ const rotas = Router();
 
 //  Todos podem ver produtos
 rotas.get("/produtos", produtoController.listar);
-rotas.post("/produtos", produtoController.adicionar);
+rotas.post("/produtosAdicionar", produtoController.adicionar);
 
 //  Apenas admin pode adicionar produto
 rotas.post("/produtos", Auth, (req, res, next) => {
@@ -17,7 +17,7 @@ rotas.post("/produtos", Auth, (req, res, next) => {
   next();
 }, produtoController.adicionar);
 
-// ✅Carrinho (somente logado)
+//  Carrinho (somente logado)
 rotas.post("/adicionarItem", Auth, carrinhoController.adicionarItem);
 rotas.get("/carrinho", Auth, carrinhoController.listar);
 rotas.put("/carrinho/:itemId", Auth, carrinhoController.atualizarQuantidade);
